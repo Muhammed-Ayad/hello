@@ -41,6 +41,16 @@ class DrawerPage extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                   context,
+                  Routes.settingsRoute,
+                );
+              },
+              title: LocaleKeys.title_settings.tr(),
+              icon: Icons.settings,
+            ),
+            CardButtonWidget(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
                   Routes.contantUsRoute,
                 );
               },

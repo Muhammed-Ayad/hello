@@ -45,11 +45,13 @@ class _AzkarScreenState extends ConsumerState<AzkarScreen> {
             return state.when(
               data: (isActive) {
                 return IconButton(onPressed: () async {
-                  await notifier.toggle();
+                  await notifier.toggleAzkar();
                 }, icon: Consumer(builder: (context, ref, _) {
                   return Icon(
-                    isActive ? Icons.notifications : Icons.notification_add,
-                    color: isActive ? Colors.amberAccent : null,
+                    isActive.isAzkarActive
+                        ? Icons.notifications
+                        : Icons.notification_add,
+                    color: isActive.isAzkarActive ? Colors.amberAccent : null,
                   );
                 }));
               },

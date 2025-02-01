@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:great_quran/theme/colors.dart';
+import 'package:great_quran/ui/settings/settings_screen.dart';
+import '../main.dart';
 import '../ui/qibla/qibla_screen.dart';
 import '../ui/nawawi/nawawi_screen.dart';
 import '../ui/radios/radio_categories_screen.dart';
@@ -16,6 +18,7 @@ class Routes {
   static const String qiblaRoute = "/qibla";
   static const String nawawiRoute = "/nawawi";
   static const String radiosRoute = "/radios";
+  static const String settingsRoute = "/settingsRoute";
 }
 
 class RouteGenerator {
@@ -23,6 +26,8 @@ class RouteGenerator {
     // final args = settings.arguments;
 
     switch (settings.name) {
+      case Routes.settingsRoute:
+        return MaterialPageRoute(builder: (_) => const SettingsScreen());
       case Routes.mainRoute:
         return MaterialPageRoute(builder: (_) => const MainView());
       case Routes.azanRoute:

@@ -47,6 +47,7 @@ class LocalNotificationService {
       // Get device time zone
       final currentTimeZone = await FlutterNativeTimezone.getLocalTimezone();
       currentTimeZone.log();
+      log('Current Time Zone: $currentTimeZone');
 
       // Set location with currentTimeZone
       tz.setLocalLocation(tz.getLocation(currentTimeZone));
@@ -75,6 +76,9 @@ class LocalNotificationService {
         onDidReceiveNotificationResponse: (details) {
           "Notification is pressed".log();
           details.payload.log();
+          print(
+            DateTime.now().toString(),
+          );
         },
       );
 
@@ -87,16 +91,17 @@ class LocalNotificationService {
 
   /// Schedules a notification to show on the given time
   Future<void> schedule(
-      {required ScheduleReminder scheduleReminder,
+      {required int id,
+      required ScheduleReminder scheduleReminder,
       required DateTime dateTime,
       required String title,
       required String body,
       String? payload}) async {
-    "Schedule notification on $dateTime on a $scheduleReminder".log();
+    "Schedule notification on  on a $scheduleReminder".log();
 
     await Future.delayed(const Duration(milliseconds: 50));
     flutterLocalNotificationsPlugin.zonedSchedule(
-      DateTime.now().millisecond, // use it as an id
+      id, // use it as an id
       title,
       body,
       tz.TZDateTime(
@@ -105,6 +110,8 @@ class LocalNotificationService {
         dateTime.month,
         dateTime.day,
         dateTime.hour,
+        dateTime.minute, // Include minute & second if needed
+        dateTime.second,
       ),
       _platformChannelSpecificsNotificationDetails,
       uiLocalNotificationDateInterpretation:
@@ -113,11 +120,24 @@ class LocalNotificationService {
       matchDateTimeComponents: scheduleReminder.dateTimeComponents,
       payload: payload,
     );
+
+    tz.TZDateTime(
+      tz.local,
+      dateTime.year,
+      dateTime.month,
+      dateTime.day,
+      dateTime.hour,
+      dateTime.minute, // Include minute & second if needed
+      dateTime.second,
+    ).log();
   }
 
   /// Cancels all  notifications
-  Future<void> cancelAll() async =>
-      await flutterLocalNotificationsPlugin.cancelAll();
+  Future<void> cancel(List<int> notificationIds) async {
+    notificationIds.forEach((element) {
+      flutterLocalNotificationsPlugin.cancel(element);
+    });
+  }
 
   /// Check If the app has pending (scheduled) notifications
   Future<bool> checkPendingNotifications() async {

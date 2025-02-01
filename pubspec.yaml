@@ -8,7 +8,7 @@ environment:
   sdk: ">=2.19.2 <3.0.0"
 
 dependencies:
-
+ 
 
   ##### ------------------------ UI -------------------------- #####
 
@@ -90,6 +90,8 @@ dependencies:
 
 
 dev_dependencies:
+  ##### ------- modified -------- #####
+  mockito:
   change_app_package_name: ^1.0.0
   flutter_lints: ^1.0.0
   build_runner: ^2.2.1

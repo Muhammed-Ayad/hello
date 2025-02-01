@@ -6,6 +6,10 @@ mixin AppEndpoints {
   static const nawawiApi = '$_baseUrl/nawawi.json';
   static String azanApi =
       'https://api.aladhan.com/v1/timingsByCity?city=cairo&country=Egypt';
+
+// modified
+  static String azanApiByCoordinates(double latitude, double longitude) =>
+      "https://api.aladhan.com/v1/timings?latitude=$latitude&longitude=$longitude";
   static const mailTo = "mailto:mohamedayaddev@gmail.com";
 
   static String qiblaApi(double latitude, double longitude) =>
