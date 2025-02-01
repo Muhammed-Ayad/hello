@@ -22,6 +22,7 @@ class _MainViewState extends ConsumerState<MainView> {
   @override
   void initState() {
     super.initState();
+
     ref
         .read(NotificationsSubscriptionNotifier.provider.notifier)
         .navigateOnNotificationLaunch(

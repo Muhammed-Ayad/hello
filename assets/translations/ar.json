@@ -1,6 +1,14 @@
 {
   "app_name": "بلغوا",
+  "prayer_times_notifications": "اشعارات مواقيت الصلاة",
+  "prayer_times_notifications_on":"تم تفعيل اشعارات مواقيت الصلاة",
+  "prayer_times_notifications_off":"تم إلغاء اشعارات مواقيت الصلاة",
+  "azkar_notifications": "اشعارات الأذكار",
+  "azkar_notifications_on":"تم تفعيل اشعارات الأذكار",
+  "azkar_notifications_off":"تم إلغاء اشعارات الأذكار",
   "title": {
+    
+    "settings": "الاعدادات",
     "app_bar": "بلغوا عني ولو آية",
     "hello": "مرحبا بكم",
     "contant_us": "تواصل معنا",
@@ -31,4 +39,5 @@
     "connect_internet": "برجاء الاتصال بالانترنت",
     "error": "خطأ"
   }
+  
 }

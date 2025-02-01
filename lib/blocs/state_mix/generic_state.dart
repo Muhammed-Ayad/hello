@@ -95,6 +95,28 @@ class GenericState<T> {
       );
     }
   }
+
+  R? whenOrNull<R>({
+    R Function(T? data)? initial,
+    R Function(T data)? data,
+    R Function()? loading,
+    R Function(String error)? error,
+  }) {
+    switch (_status) {
+      case Status.initial:
+        return initial?.call(_data);
+      case Status.success:
+        return data?.call(_data as T);
+      case Status.fail:
+        return error?.call(this.error ?? LocaleKeys.error_error.tr());
+      case Status.loading:
+        return loading?.call();
+      default:
+        return null;
+    }
+  }
 }
+
+/// Optional state handler for cases where not all states need to be handled.
 
 enum Status { initial, success, fail, loading }

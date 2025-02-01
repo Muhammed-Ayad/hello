@@ -1,6 +1,14 @@
 {
   "app_name": "بلغوا",
+
+ "prayer_times_notifications": "",
+ "prayer_times_notifications_on":"",
+ "prayer_times_notifications_off":"",
+ "azkar_notifications": "",
+ "azkar_notifications_on":"",
+ "azkar_notifications_off":"",
   "title": {
+    "settings": "",
     "app_bar": "",
     "hello": "",
     "contant_us": "",
